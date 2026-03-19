@@ -7,3 +7,13 @@
 /BookShelf/BookShelf.Orchestrator/obj
 /BookShelf/BookShelf/bin
 /BookShelf/BookShelf/obj
+/BookShelf/BookkShelf.Model/obj
+/BookShelf/BookkShelf.Model/bin
+/BookShelf/BookShelf.Api/bin
+/BookShelf/BookShelf.Api/obj
+/BookShelf/BookShelf.IntegrationTest/obj
+/BookShelf/BookShelf.IntegrationTests/bin
+/BookShelf/BookShelf.IntegrationTests/obj
+/BookShelf/BookShelf.Orchestartor/obj
+/BookShelf/BookShelf.OrchestartorTests/bin
+/BookShelf/BookShelf.OrchestartorTests/obj
