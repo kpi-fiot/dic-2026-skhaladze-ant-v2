@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8d1f8bf5_002D7daf_002D4d1f_002Db3ad_002De92e043cf1dd/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetBookByIdAsync_IfBookExists_ReturnsBook" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::E115448D-56E6-42EE-BD3D-DD61DD663911::net8.0::BookShelf.OrchestartorTests.Book.BookOrchestratorTests.GetBookByIdAsync_IfBookExists_ReturnsBook&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::E115448D-56E6-42EE-BD3D-DD61DD663911::net8.0::BookShelf.OrchestartorTests.Book.BookOrchestratorTests.GetBookByIdAsync_IfBookDoesntExist_ThrowException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::E6733B29-125E-4307-99C2-D83619EE4B38::net8.0::BookShelf.IntegrationTests.Book.CreateBookAsyncTests.GetByIdAsync_IfBookExists_ReturnsBook&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
