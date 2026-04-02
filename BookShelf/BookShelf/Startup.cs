@@ -1,14 +1,19 @@
 ﻿using AutoMapper;
+using Azure.Storage.Blobs;
 using BookShelf.Api.Book;
 using BookShelf.Api.Shelf;
 using BookShelf.Dal;
 using BookShelf.Dal.Book;
 using BookShelf.Dal.Shelf;
 using BookShelf.Model.Book;
+using BookShelf.Model.BookShelf;
 using BookShelf.Model.Shelf;
 using BookShelf.Orchestrator.Book;
+using BookShelf.Orchestrator.BookShelf;
 using BookShelf.Orchestrator.Shelf;
+using BookShelf.Platform.BlobStorage;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace BookShelf.Api;
 
@@ -33,6 +38,8 @@ public class Startup
         services.AddScoped<IShelfOrchestrator, ShelfOrchestrator>();
         services.AddScoped<IShelfRepository, ShelfRepository>();
 
+        services.AddScoped<IBooksShelfOrchestrator, BookShelfOrchestrator>();
+
         services.AddAutoMapper(config => config.AddProfiles(
             new List<Profile>
             {
@@ -42,6 +49,7 @@ public class Startup
             }));
 
         ConfigureDb(services);
+        ConfigureEdgeServices(services);
     }
 
     protected virtual void ConfigureDb(IServiceCollection services)
@@ -51,6 +59,17 @@ public class Startup
 
         services.AddDbContext<CosmosDbContext>(
             c=> c.UseCosmos(_configuration.GetConnectionString("CosmosConnection"), "dic-2026"));
+    }
+
+    protected virtual void ConfigureEdgeServices(IServiceCollection services)
+    {
+        var blobConfig = new BlobConfiguration();
+        _configuration.Bind("AzureBlobContainerConnectionString", blobConfig);
+        services.AddSingleton(blobConfig);
+
+        var client = new BlobServiceClient(blobConfig.ConnectionString);
+        services.AddScoped<IBlobStorage, BlobStorage>();
+        services.AddScoped(_ => client);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
