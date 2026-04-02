@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using BookShelf.Api.Book.Contract;
+﻿using BookShelf.Api.Book.Contract;
 using Newtonsoft.Json;
 using FluentAssertions;
 using BookShelf.Dal.Book;
