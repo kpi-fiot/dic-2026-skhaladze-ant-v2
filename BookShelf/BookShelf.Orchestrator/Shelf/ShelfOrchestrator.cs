@@ -1,13 +1,18 @@
-﻿using BookShelf.Model.Shelf;
+﻿using BookShelf.Model.MessageBroker;
+using BookShelf.Model.Shelf;
 
 namespace BookShelf.Orchestrator.Shelf;
 
 public class ShelfOrchestrator : IShelfOrchestrator
 {
+    private readonly IPublisher _statsPublisher;
     private readonly IShelfRepository _repository;
 
-    public ShelfOrchestrator(IShelfRepository repository)
+    public ShelfOrchestrator(
+        IPublisher statsPublisher,
+        IShelfRepository repository)
     {
+        _statsPublisher = statsPublisher;
         _repository = repository;
     }
     public async Task<List<ShelfDto>> GetShelvesAsync()
@@ -15,8 +20,12 @@ public class ShelfOrchestrator : IShelfOrchestrator
         return await _repository.GetShelvesAsync();
     }
 
-    public Task<ShelfDto> CreateShelfAsync(ShelfDto shelf)
+    public async Task<ShelfDto> CreateShelfAsync(ShelfDto shelf)
     {
-        return _repository.CreateShelfAsync(shelf);
+        var createdEntity = await _repository.CreateShelfAsync(shelf);
+
+        await _statsPublisher.PublishAsync(createdEntity.Id);
+
+        return createdEntity;
     }
 }

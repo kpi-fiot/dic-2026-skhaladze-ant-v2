@@ -14,6 +14,9 @@ using BookShelf.Orchestrator.Shelf;
 using BookShelf.Platform.BlobStorage;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using Azure.Messaging.ServiceBus;
+using BookShelf.Model.MessageBroker;
+using BookShelf.Platform.MessageBroker;
 
 namespace BookShelf.Api;
 
@@ -70,6 +73,14 @@ public class Startup
         var client = new BlobServiceClient(blobConfig.ConnectionString);
         services.AddScoped<IBlobStorage, BlobStorage>();
         services.AddScoped(_ => client);
+
+        services.AddSingleton(typeof(ServiceBusClient), new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnectionString")));
+        services.AddScoped<IPublisher, ShelfStatsPublisher>();
+
+        var subscriber = new ShelfStatsSubscriber(new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnectionString")));
+        subscriber.SubscribeAsync().GetAwaiter().GetResult();
+
+        services.AddScoped<ISubscriber>(_ => subscriber);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
