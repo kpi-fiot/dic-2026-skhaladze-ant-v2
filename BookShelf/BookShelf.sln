@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShelf.OrchestartorTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShelf.IntegrationTests", "BookShelf.IntegrationTests\BookShelf.IntegrationTests.csproj", "{E6733B29-125E-4307-99C2-D83619EE4B38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShelf.Platform", "BookShelf.Platform\BookShelf.Platform.csproj", "{6C6F6A36-FB82-4D40-ABE6-6D3EE38EBF54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{E6733B29-125E-4307-99C2-D83619EE4B38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6733B29-125E-4307-99C2-D83619EE4B38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6733B29-125E-4307-99C2-D83619EE4B38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C6F6A36-FB82-4D40-ABE6-6D3EE38EBF54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C6F6A36-FB82-4D40-ABE6-6D3EE38EBF54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C6F6A36-FB82-4D40-ABE6-6D3EE38EBF54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C6F6A36-FB82-4D40-ABE6-6D3EE38EBF54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
